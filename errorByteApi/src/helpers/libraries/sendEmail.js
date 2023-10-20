@@ -1,16 +1,15 @@
 import nodemailer from "nodemailer"
 
 const sendMail = async (mailOptions) => {
-    const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD } = process.env
-    let transporter = nodemailer.createTransport({
-        host: SMTP_HOST,
-        port: SMTP_PORT,
-        secure: true,
+    const transporter = nodemailer.createTransport({
+        port: 465,               // true for 465, false for other ports
+        host: "smtp.gmail.com",
         auth: {
-            user: SMTP_USER,
-            pass: SMTP_PASSWORD
-        }
-    })
+            user: 'bookmyservices.one@gmail.com',
+            pass: 'dpxtivjexdkxucvq',
+        },
+        secure: true,
+    });
 
     let info = await transporter.sendMail(mailOptions)
     console.log(`Message send: ${info.messageId}`)

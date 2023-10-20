@@ -69,7 +69,7 @@ const forgotPassword = asyncErrorHandler(async (req, res, next) => {
 
     try {
         await sendMail({
-            from: process.env.SMTP_USER,
+            from: "errorByte@gmail.com",
             to: resetEmail,
             subject: "Reset ur password.",
             html: emailTemplate
